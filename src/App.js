@@ -13,11 +13,13 @@ const App = () => {
     <div className="App">
       <Router>
         <Header />
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/movie/:imdbId" exact element={<MovieDetails />} />
-          <Route path="*" exact element={<PageNotFound />} />
-        </Routes>
+        <div className="container">
+          <Routes>
+            <Route path="/" exact element={<Home />} />
+            <Route path="/movie/:imdbId" exact element={<MovieDetails />} />
+            <Route path="*" exact element={<PageNotFound />} />
+          </Routes>
+        </div>
         <Footer />
       </Router>
     </div>
