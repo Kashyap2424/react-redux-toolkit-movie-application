@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import "./Header.scss";
 import UserImage from "../../images/user-image.jpeg";
+import {
+  fetchAsyncMovies,
+  fetchAsyncShows,
+} from "../../features/Movies/MoviesSlice";
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState("");
 
   const searchMoviesAndShowHandler = (e) => {
     e.preventDefault();
-    console.log(searchQuery);
+    if (searchQuery === "")
+      return alert("Please, enter a movie or show name... 🥺");
+    dispatch(fetchAsyncMovies(searchQuery));
+    dispatch(fetchAsyncShows(searchQuery));
+    setSearchQuery("");
   };
 
   return (
@@ -26,7 +36,7 @@ const Header = () => {
             onChange={(e) => setSearchQuery(e.target.value)}
           />
           <button type="sumit">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <i className="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
       </div>
