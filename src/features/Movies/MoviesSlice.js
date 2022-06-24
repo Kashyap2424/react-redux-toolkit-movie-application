@@ -8,13 +8,13 @@ const moviesSlice = createSlice({
   name: "movies",
   initialState: initialState,
   reducers: {
-    addMovis(state, { payload }) {
+    addMovies(state, { payload }) {
       state.movies = payload;
     },
   },
 });
 
-export const { addMovis } = moviesSlice.actions;
+export const { addMovies } = moviesSlice.actions;
 
 export const getAllMovies = (state) => state.movies.movies;
 
