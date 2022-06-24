@@ -34,8 +34,9 @@ export const fetchAsyncShows = createAsyncThunk(
 export const fetchAsyncMovieOrDetail = createAsyncThunk(
   "movies/fetchAsyncMovieOrDetail",
   async (id) => {
+    console.log(id);
     const response = await movieApi
-      .get(`i=${id}&Plot=full&apikey=${API_KEY}`)
+      .get(`?apikey=${API_KEY}&i=${id.imdbId}&Plot=full`)
       .catch((error) => {
         console.log("Error :", error);
       });
@@ -86,5 +87,7 @@ export const { addMovies } = moviesSlice.actions;
 
 export const getAllMovies = (state) => state.movies.movies;
 export const getAllShows = (state) => state.movies.shows;
+export const getSelectedMovieOrShowDetail = (state) =>
+  state.movies.selectedMovieOrShowDetail;
 
 export default moviesSlice.reducer;
