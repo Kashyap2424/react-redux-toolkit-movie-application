@@ -12,8 +12,10 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchAsyncMovies());
-    dispatch(fetchAsyncShows());
+    const searchQuerysMovies = "harry";
+    const searchQuerysShow = "friends";
+    dispatch(fetchAsyncMovies(searchQuerysMovies));
+    dispatch(fetchAsyncShows(searchQuerysShow));
   }, [dispatch]);
 
   return (

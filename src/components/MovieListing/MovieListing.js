@@ -13,9 +13,13 @@ const MovieListing = () => {
 
   let renderMovies =
     movies.Response === "True" ? (
-      movies.Search.map((movie, index) => (
-        <MoviesCard key={index} data={movie} />
-      ))
+      movies.Search.map((movie, index) =>
+        movie.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <MoviesCard key={index} data={movie} />
+        )
+      )
     ) : (
       <>
         <div className="movies-error">
@@ -26,9 +30,13 @@ const MovieListing = () => {
 
   let renderShows =
     shows.Response === "True" ? (
-      shows.Search.map((movie, index) => (
-        <MoviesCard key={index} data={movie} />
-      ))
+      shows.Search.map((show, index) =>
+        show.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <MoviesCard key={index} data={show} />
+        )
+      )
     ) : (
       <>
         <div className="movies-error">
