@@ -8,12 +8,11 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 const MovieListing = () => {
   const movies = useSelector(getAllMovies);
 
-  let renderMovies = "";
-  renderMovies =
-    movies.Response === "true" ? (
-      movies.Search.map((movie, index) => {
-        <MoviesCard key={index} data={movie} />;
-      })
+  let renderMovies =
+    movies.Response === "True" ? (
+      movies.Search.map((movie, index) => (
+        <MoviesCard key={index} data={movie} />
+      ))
     ) : (
       <>
         <div className="movies-error">
